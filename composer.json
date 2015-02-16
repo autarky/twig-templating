@@ -1,5 +1,5 @@
 {
-	"name": "autarky/twig",
+	"name": "autarky/twig-templating",
 	"description": "Twig integration for the Autarky framework.",
 	"keywords": ["autarky", "twig", "templating"],
 	"license": "MIT",
