@@ -1,0 +1,31 @@
+{
+	"name": "autarky/twig",
+	"description": "Twig integration for the Autarky framework.",
+	"keywords": ["autarky", "twig", "templating"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Andreas Lutro",
+			"email": "anlutro@gmail.com"
+		}
+	],
+	"require": {
+		"autarky/framework": "~0.8",
+		"twig/twig": "~1.16"
+	},
+	"require-dev": {
+		"mockery/mockery": "~0.9.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"Autarky\\TwigTemplating\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Autarky\\Tests\\": "tests/classes/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
