@@ -41,16 +41,20 @@ abstract class TwigTemplate extends \Twig_Template implements EventDispatcherAwa
 	 */
 	public function display(array $context, array $blocks = array())
 	{
-		$this->template->getContext()
-			->replace($context);
+		if ($context) {
+			$templateContext = clone $this->template->getContext();
+			$templateContext->replace($context);
+		} else {
+			$templateContext = $this->template->getContext();
+		}
 
 		if ($this->eventDispatcher !== null) {
 			$this->eventDispatcher->dispatch(
 				'template.rendering: '.$this->template->getName(),
-				new TemplateEvent($this->template)
+				new TemplateEvent($this->template, $templateContext)
 			);
 		}
 
-		parent::display($this->template->getContext()->toArray(), $blocks);
+		parent::display($templateContext->toArray(), $blocks);
 	}
 }

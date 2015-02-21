@@ -20,11 +20,18 @@ class TemplateEvent extends Event
 	protected $template;
 
 	/**
-	 * @param Template $template
+	 * @var TemplateContext
 	 */
-	public function __construct(Template $template)
+	protected $context;
+
+	/**
+	 * @param Template $template
+	 * @param TemplateContext $context
+	 */
+	public function __construct(Template $template, TemplateContext $context = null)
 	{
 		$this->template = $template;
+		$this->context = $context ?: $template->getContext();
 	}
 
 	/**
@@ -44,6 +51,6 @@ class TemplateEvent extends Event
 	 */
 	public function getContext()
 	{
-		return $this->template->getContext();
+		return $this->context;
 	}
 }
