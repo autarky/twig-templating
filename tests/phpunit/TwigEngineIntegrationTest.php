@@ -16,7 +16,7 @@ class TwigEngineIntegrationTest extends TestCase
 		$app->getConfig()->set('path.templates', TESTS_RSC_DIR.'/templates');
 		$app->getConfig()->set('path.templates-cache', TESTS_RSC_DIR.'/template-cache');
 		$app->getConfig()->set('session.driver', 'null');
-		$app->getConfig()->set('session.mock', true);
+		$app->getConfig()->set('session.storage', 'mock_array');
 		$app->getConfig()->set('app.debug', true);
 		return $app;
 	}
