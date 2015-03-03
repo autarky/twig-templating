@@ -82,7 +82,7 @@ class TwigEngineIntegrationTest extends TestCase
 	{
 		$eng = $this->makeEngine();
 		$eng->addNamespace('namespace', TESTS_RSC_DIR.'/templates/vendor/namespace');
-		$result = $eng->render('namespace:template1.twig');
+		$result = $eng->render('@namespace/template1.twig');
 		$this->assertEquals('OK', $result);
 	}
 
@@ -91,7 +91,7 @@ class TwigEngineIntegrationTest extends TestCase
 	{
 		$eng = $this->makeEngine();
 		$eng->addNamespace('namespace', TESTS_RSC_DIR.'/templates/vendor/namespace');
-		$result = $eng->render('namespace:template2.twig');
+		$result = $eng->render('@namespace/template2.twig');
 		$this->assertEquals('Overridden', $result);
 	}
 
