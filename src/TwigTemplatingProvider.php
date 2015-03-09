@@ -12,6 +12,7 @@ namespace Autarky\TwigTemplating;
 
 use Autarky\Container\ContainerInterface;
 use Autarky\Provider;
+use Twig_Loader_Filesystem;
 
 /**
  * Provides the Twig templating engine.
@@ -41,7 +42,9 @@ class TwigTemplatingProvider extends Provider
 	 */
 	public function makeTwigLoader()
 	{
-		return new TwigFileLoader($this->app->getConfig()->get('path.templates'));
+		return new Twig_Loader_Filesystem(
+			$this->app->getConfig()->get('path.templates')
+		);
 	}
 
 	/**
