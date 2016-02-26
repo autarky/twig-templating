@@ -69,7 +69,9 @@ class TwigEngineIntegrationTest extends TestCase
 	/** @test */
 	public function sessionMessagesAreAvailableAsGlobals()
 	{
-		$eng = $this->makeEngine(['Autarky\Session\SessionProvider']);
+		$sessionProviderClass = class_exists('Autarky\Http\SessionProvider') ?
+			'Autarky\Http\SessionProvider' : 'Autarky\Session\SessionProvider';
+		$eng = $this->makeEngine([$sessionProviderClass]);
 		$session = $this->app->resolve('Symfony\Component\HttpFoundation\Session\Session');
 		$data = ['new' => ['_messages' => ['foo', 'bar']]];
 		$session->getFlashBag()->initialize($data);
