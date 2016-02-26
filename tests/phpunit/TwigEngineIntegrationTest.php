@@ -103,7 +103,13 @@ class TwigEngineIntegrationTest extends TestCase
 		$eng = $this->makeEngine();
 		$eng->setEventDispatcher($dispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher);
 		$events = [];
-		$callback = function($event) use(&$events) { $events[] = $event->getName(); };
+		// can't find a better way to check if symfony/event-dispatcher is 2.x or 3.x
+		$symfonyEvents2 = method_exists(new \Symfony\Component\EventDispatcher\Event, 'getName');
+		if ($symfonyEvents2) {
+			$callback = function($event) use(&$events) { $events[] = $event->getName(); };
+		} else {
+			$callback = function($event, $name) use(&$events) { $events[] = $name; };
+		}
 		$eng->creating('template.twig', $callback);
 		$eng->rendering('template.twig', $callback);
 		$eng->creating('layout.twig', $callback);
