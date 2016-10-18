@@ -49,7 +49,9 @@ class TwigEnvironment extends Twig_Environment implements EventDispatcherAwareIn
 		/** @var \Autarky\TwigTemplating\Twig\Template $twigTemplate */
 		$twigTemplate = parent::loadTemplate($path, $index);
 		$twigTemplate->setTemplate($template);
-		$twigTemplate->setEventDispatcher($this->eventDispatcher);
+		if ($this->eventDispatcher !== null) {
+			$twigTemplate->setEventDispatcher($this->eventDispatcher);
+		}
 
 		return $twigTemplate;
 	}
