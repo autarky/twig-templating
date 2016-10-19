@@ -10,7 +10,7 @@
 		}
 	],
 	"require": {
-		"autarky/framework": "~0.8",
+		"autarky/framework": "~0.11",
 		"twig/twig": "~1.16"
 	},
 	"require-dev": {
